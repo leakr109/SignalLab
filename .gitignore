@@ -1,0 +1,5 @@
+build/
+*.o
+*.exe
+data/*.csv
+
