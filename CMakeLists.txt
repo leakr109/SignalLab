@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
-project(SensorAnalyzer)
+project(SignalLab)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(sensor-analyzer
+add_executable(signalLab
     src/main.cpp
+    src/generator.cpp
 )
 
 
