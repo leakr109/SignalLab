@@ -7,6 +7,7 @@ add_executable(signalLab
     src/main.cpp
     src/generator.cpp
     src/quantizer.cpp
+    src/fft.h
 )
 
 
