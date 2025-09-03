@@ -1,10 +1,9 @@
 #include "fft.h"
-#include <complex>
 #include <cmath>
 
 #define PI 3.1415926535897932384626433832
 
-vector<complex<double>> PKE (int n){
+vector<complex<double>> PKE (int n){    //primitivni koreni enote
     vector<complex<double>> pke(n);
     for(int i = 0; i < n; i++){
         pke[i] = complex<double>(cos(2*PI*i/n), sin(2*PI*i/n));
@@ -69,7 +68,7 @@ int potenca2(int x){
     return 0;
 }
 
-int fastFurierTransform(vector<double>& signal){
+vector<complex<double>> fastFurierTransform(vector<double>& signal){
     int nx = signal.size();
     int n = potenca2(nx*2);
     vector<complex<double>> p(n);
@@ -80,5 +79,5 @@ int fastFurierTransform(vector<double>& signal){
     vector<complex<double>> res = fft(p,n);    //dobim vrednostno predstavitev
     //ifft(res, n);
 
-    return 0;
+    return res;
 }

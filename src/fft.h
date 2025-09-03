@@ -2,7 +2,9 @@
 #define FFT_H
 
 #include <vector>
+#include <complex>
+using namespace std;
 
-int fastFurierTransform(std::vector<double>& signal);
+vector<complex<double>> fastFurierTransform(vector<double>& signal);
 
 #endif
