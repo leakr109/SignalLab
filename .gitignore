@@ -1,7 +1,7 @@
 build/
 *.o
 *.exe
-data/*.csv
+visualization/*.csv
 
 .vscode/
 

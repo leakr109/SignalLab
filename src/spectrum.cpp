@@ -20,21 +20,24 @@ vector<double> phaseSpectrum(const vector<complex<double>>& signal_fft) {
     return phases;
 }
 
-void spectrum(vector<complex<double>>& signal_fft, double fs, int N){
+// saves spectrum to /visualization/data.csv
+int saveSpectrum(vector<complex<double>>& signal_fft, double fs, int N){
     int n = signal_fft.size();
     vector<double> amp = amplitudeSpectrum(signal_fft, N);
     vector<double> phs = phaseSpectrum(signal_fft);
-    int maxF = 0;
 
-    for(int k = 0; k < n/2; k++){
-        if(amp[k] > amp[maxF]){
-            maxF = k;
-        }
+    double df = fs / n; // frekvenčni korak
+    
+    ofstream file("../visualization/data.csv");
+    if (!file.is_open()) return 1; //error
+
+    for (int i = 0; i < amp.size(); i++){
+        double f = i * df;
+        file << f << "," << amp[i] << "," << phs[i] << "\n";  
     }
-    double df = fs / n;  // frekvenčni korak
-    double freq = maxF * df;
 
-    printf("f: %.2f Hz, amp: %.2f, phs: %.2f\n", freq, amp[maxF], phs[maxF]);
+    file.close();
+    return 0;
 }
 
 

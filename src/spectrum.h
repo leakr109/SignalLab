@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <complex>
+#include <fstream>
 using namespace std;
 
 // computes amplitude spectrum
@@ -12,6 +13,6 @@ vector<double> amplitudeSpectrum(vector<complex<double>>& signal_fft, int N);
 vector<double> amplitudeSpectrum(vector<complex<double>>& signal_fft, int N);
 
 // for now: finds the input frequency, amplitude and phase
-void spectrum(vector<complex<double>>& signal_fft, double fs, int N);
+int saveSpectrum(vector<complex<double>>& signal_fft, double fs, int N);
 
 #endif
