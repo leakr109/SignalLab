@@ -7,22 +7,32 @@
 #include <iostream>
 using namespace std;
 
+int fs = 1024;  //število vzorvec na sekundo
 
-int main() {
-    double fs = 1024.0;   //število vzorvec na sekundo
-    int N = 1024;         // N = fs/F*k
-    double F = 20.0;
-
-    //check Nyquist condition
+bool checkNyquist(double F){
     if (!(fs >= 2 * F)){
         cout << "Nyquist condition is NOT met" << '\n';
-        return 1;
+        return false;
     }
+    return true;
+}
+
+int main() { 
+    int N = 1024;  // N = fs/F*k
+
+    cout << "Num of sinusoids: ";
+    int n; cin >> n;
+    cout << '\n';
 
     //generate
-    SignalGenerator gen(fs, N);     // fs, n
-    gen.add(F, 1.0, 0);             //F, A, ph
-    gen.add(100, 1.0, 0); 
+    SignalGenerator gen(fs, N);
+    for(int i = 0; i < n; i++){
+        cout << "sinusoid " << i + 1<< " (frequency amplitude phase): ";
+        double f, a, ph;
+        cin >> f >> a >> ph;
+        if(!checkNyquist(f)) return 1;
+        gen.add(f, a, ph);
+    }
     vector<double> signal = gen.get();   
 
     //quantize
