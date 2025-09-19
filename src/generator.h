@@ -6,15 +6,14 @@ using namespace std;
 
 class SignalGenerator {
 private:
-    double frequency;
-    double amplitude;
-    double phase;
     double samplingFrequency;
     int numSamples;
+    vector<double> signal;
 
 public:
-    SignalGenerator(double f, double a, double p, double fs, int n);
-    vector<double> generate();
+    SignalGenerator(double fs, int n);
+    void add(double F, double A, double ph);
+    vector<double> get();
     int getNumSamples() const;
 };
 

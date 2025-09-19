@@ -20,11 +20,13 @@ int main() {
     }
 
     //generate
-    SignalGenerator gen(F, 1.0, 0, fs, N);  //F, A, ph, fs, n
-    vector<double> signal = gen.generate();
+    SignalGenerator gen(fs, N);     // fs, n
+    gen.add(F, 1.0, 0);             //F, A, ph
+    gen.add(100, 1.0, 0); 
+    vector<double> signal = gen.get();   
 
     //quantize
-    Quantizer q(8, -3, 3);  //bits, minVal, maxVal
+    Quantizer q(8, -3, 3);          //bits, minVal, maxVal
     vector<double> quantSignal = q.quantize(signal);
 
     //perform fft and get amplitude and phase spectrum
