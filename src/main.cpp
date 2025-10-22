@@ -33,7 +33,7 @@ int main() {
         if(!checkNyquist(f)) return 1;
         gen.add(f, a, ph);
     }
-    vector<double> signal = gen.get();   
+    vector<double> signal = gen.get();  
 
     //quantize
     Quantizer q(8, -3, 3);          //bits, minVal, maxVal
