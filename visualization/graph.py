@@ -22,11 +22,11 @@ axs[0, 0].set_ylabel("Amplitude")
 axs[0, 0].grid(True)
 
 # sinusoids
-colors = ["yellow", "orange", "red", "cyan", "green", "purple", "brown", "pink", "teal", "gray", "olive"]
+colors = ["yellow", "orange", "red", "green", "cyan", "purple", "brown", "pink", "teal", "gray", "olive"]
 for i in range(len(sinusoids)):
     axs[1, 0].plot(sinusoids.columns, sinusoids.iloc[i], color=colors[i % len(colors)], label=f"sin {i+1}")
 
-axs[1, 0].set_title("Posamezne sinusoide")
+axs[1, 0].set_title("Sinuosids")
 axs[1, 0].set_xlabel("Sample index")
 axs[1, 0].set_ylabel("Amplitude")
 axs[1, 0].grid(True)

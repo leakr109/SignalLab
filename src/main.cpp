@@ -22,21 +22,26 @@ int main() {
 
     cout << "Num of sinusoids: ";
     int n; cin >> n;
-    cout << '\n';
 
     //generate
     SignalGenerator gen(fs, N);
     for(int i = 0; i < n; i++){
-        cout << "sinusoid " << i + 1<< " (frequency amplitude phase): ";
         double f, a, ph;
-        cin >> f >> a >> ph;
+        cout << '\n' << "=== SINUSOID " << i + 1 << " ===" << '\n';
+        cout << "frequency: ";
+        cin >> f;
+        cout << "amplitude: ";
+        cin >> a;
+        cout << "phase: ";
+        cin >> ph;
+
         if(!checkNyquist(f)) return 1;
         gen.add(f, a, ph);
     }
     vector<double> signal = gen.get();  
 
     //quantize
-    Quantizer q(8, -3, 3);          //bits, minVal, maxVal
+    Quantizer q(8, -3, 3);    //bits, minVal, maxVal
     vector<double> quantSignal = q.quantize(signal);
 
     //perform fft and get amplitude and phase spectrum
